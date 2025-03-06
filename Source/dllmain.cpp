@@ -1,5 +1,10 @@
-#include <stdio.h>
 #include <Mod/CppUserModBase.hpp>
+#include <DynamicOutput/DynamicOutput.hpp>
+#include <Unreal/UObjectGlobals.hpp>
+#include <Unreal/UObject.hpp>
+
+using namespace RC;
+using namespace RC::Unreal;
 
 class AssetRegistryLoader : public RC::CppUserModBase
 {
@@ -11,7 +16,7 @@ public:
         ModDescription = STR("This is my awesome mod");
         ModAuthors = STR("Nadz");
         
-        printf("AssetRegistryLoader says hello\n");
+        Output::send<LogLevel::Verbose>(STR("AssetRegistryLoader says hello\n"));
     }
 
     ~AssetRegistryLoader() override
@@ -21,6 +26,13 @@ public:
     auto on_update() -> void override
     {
     }
+
+    auto on_unreal_init() -> void override
+    {
+        auto Object = UObjectGlobals::StaticFindObject<UObject*>(nullptr, nullptr, STR("/Script/CoreUObject.Object"));
+        Output::send<LogLevel::Verbose>(STR("Object Name: {}\n"), Object->GetFullName());
+    }
+
 };
 
 #define ASSET_REGISTRY_LOADER_API __declspec(dllexport)
