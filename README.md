@@ -22,6 +22,6 @@ You will need your github account to be linked to an Epic games account to pull 
 3. Execute this command: `xmake f -m "Game__Shipping__Win64"`
 
 ## Build Instructions
-Whenever you need to rebuild the mode, simply execute `xmake` in the project root. This will build the mod into a `AssetRegistryLoader.dll` in
+Whenever you need to rebuild the mod, simply execute `xmake` in the project root. This will build the mod into a `AssetRegistryLoader.dll` in
 `AssetRegistryLoader\Binaries\Game__Shipping__Win64\AssetRegistryLoader\`. 
 Follow the [UE4SS guide on how to install a c++ mod](https://docs.ue4ss.com/dev/guides/installing-a-c++-mod.html) to learn how to load and test the mod.
